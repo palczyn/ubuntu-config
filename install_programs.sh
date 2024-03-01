@@ -13,7 +13,7 @@ snap install alacritty --classic
 snap install spotify
 
 #install i3 feh polybar
-apt install i3 feh polybar
+apt install i3 feh polybar -y
 
 # Exit the script
 exit 0
