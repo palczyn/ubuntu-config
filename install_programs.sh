@@ -13,7 +13,7 @@ snap install alacritty --classic
 snap install spotify
 
 #install i3 feh polybar
-apt install i3 feh polybar -y
+apt install neovim i3-wm feh polybar -y
 
 # Exit the script
 exit 0
