@@ -8,12 +8,13 @@ apt-get update
 apt-get install google-chrome-stable -y
 echo "Google Chrome has been successfully installed."
 
-#install spotify alacritty
+#install spotify alacritty postman
 snap install alacritty --classic
 snap install spotify
+snap install postman
 
-#install i3 feh polybar
-apt install neovim i3-wm feh polybar -y
+#install neovim i3 feh polybar
+apt install neovim i3-wm i3lock feh polybar maim xclip xdotool -y
 
 # Exit the script
 exit 0
