@@ -36,8 +36,8 @@ else
 fi
 
 # Install snap packages
-snap_classic_packages = ( alacritty )
-for snap_pkg in snap_classic_packages; do
+snap_classic_packages=( alacritty nvim )
+for snap_pkg in "${snap_classic_packages[@]}"; do
 	if ! is_snap_installed "$snap_pkg"; then
 		echo "Installing $snap_pkg via snap..."
 		sudo snap install "$snap_pkg" --classic
@@ -46,18 +46,18 @@ for snap_pkg in snap_classic_packages; do
 	fi
 done
 
-snap_packages = ( spotify postman )
-for snap_pkg in snap_packages; do
+snap_packages=( spotify postman )
+for snap_pkg in "${snap_packages[@]}"; do
 	if ! is_snap_installed "$snap_pkg"; then
 		echo "Installing $snap_pkg via snap..."
-		sudo snap install "$snap_pkg" --classic
+		sudo snap install "$snap_pkg"
 	else
 		echo "$snap_pkg is already installed via snap."
 	fi
 done
 
 # Install apt packages
-packages=( neovim i3-wm i3lock feh polybar maim xclip xdotool -y )
+packages=( i3-wm i3lock feh polybar maim xclip xdotool )
 packages_to_install=()
 
 for pkg in "${packages[@]}"; do
@@ -75,11 +75,11 @@ else
 fi
 
 # Move configs do config directory
-config_dirs=( ./nvim ./polybar ./i3 )
+config_dirs=( nvim polybar i3 )
 for dir in "${config_dirs[@]}"; do
-	if [ -d "$dir" ]; then
-		echo "Moving $dir to ~/.config/$nvim_config_dir"
-		mv -f "$dir" "~/.config"
+	if [ -d "./${dir}" ]; then
+		echo "Moving ${dir} to ~/.config/"
+		cp -r "./${dir}/" -t "${HOME}/.config/"
 	else
 		echo "Cannot find directory $dir"
 	fi
